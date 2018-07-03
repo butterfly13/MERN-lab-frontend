@@ -11,37 +11,9 @@ class App extends Component {
     super()
     this.state = {
       students: [
-        {
-          'firstName': 'Jane',
-          'lastName': 'Doe',
-          'course': 'WDI 21'
 
-        },
-        {
-          'firstName': 'John',
-          'lastName': 'Doe',
-          'course': 'WDI 10'
-
-        },
-        {
-          'firstName': 'Chanya',
-          'lastName': 'Smith',
-          'course': 'WDI 22'
-
-        },
-        {
-          'firstName': 'Nancy',
-          'lastName': 'Wang',
-          'course': 'WDI 21'
-
-        },
-        {
-          'firstName': 'Greg',
-          'lastName': 'Nelson',
-          'course': 'WDI 22'
-
-        }
       ]
+      
     }
   }
   render () {
