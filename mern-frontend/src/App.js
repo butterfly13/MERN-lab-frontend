@@ -5,16 +5,36 @@ import StudentList from './Components/StudentList/StudentList'
 import NewStudent from './Components/NewStudent/NewStudent'
 import Student from './Components/Student/Student'
 import Home from './Components/Home/Home'
+import axios from 'axios'
 
 class App extends Component {
   constructor () {
     super()
     this.state = {
-      students: [
+      students:  []
 
-      ]
-      
     }
+    this.getStudents = this.getStudents.bind(this)
+  }
+
+  getStudents () {
+    axios.get('https://mern-lab-api.herokuapp.com/api/students')
+      .then(res => {
+        console.log('from api')
+        console.log(res)
+        this.setState({
+          students: res.data
+        })
+      })
+      .catch(err => console.log('Error fetching data in studentLst', err))
+  }
+
+  componentWillMount () {
+    this.getStudents()
+  }
+
+  componentDidMount () {
+    this.getStudents()
   }
   render () {
     return (
@@ -49,9 +69,9 @@ class App extends Component {
           />
 
           <Route
-            path='/studentlist/:firstName'
+            path='/studentlist/:id'
             render={(name) => {
-              return <Student  {...name} students={this.state.students} />
+              return <Student {...name} students={this.state.students} />
             }}
           />
         </main>
