@@ -1,26 +1,9 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-// import listOfStudents from './list.json'
-// import axios from 'axios'
+
 
 class StudentList extends Component {
-//   constructor () {
-//     super()
-//     this.state = {
-//       students: []
-//     }
-//   }
 
-//   componentDidMount () {
-//     axios.get('https://mern-lab-api.herokuapp.com/api/students')
-//       .then(res => {
-//         console.log(res)
-//         this.setState({
-//           students: res.data
-//         })
-//       })
-//       .catch(err => console.log('Error fetching data in studentLst', err))
-//   }
   render () {
     console.log(this.props)
     let list = this.props.students.map((student, i) => {

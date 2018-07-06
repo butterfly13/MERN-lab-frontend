@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import {BrowserRouter as Router} from 'react-router-dom'
 import {Route, Link, Switch} from 'react-router-dom'
 import StudentList from './Components/StudentList/StudentList'
 import NewStudent from './Components/NewStudent/NewStudent'
@@ -11,7 +12,7 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      students:  []
+      students: []
 
     }
     this.getStudents = this.getStudents.bind(this)
@@ -38,43 +39,48 @@ class App extends Component {
   }
   render () {
     return (
+
       <div className='App'>
-        <nav>
-          <Link to='/'>Home</Link> <br />
-          <Link to='/studentList'>All Students</Link> <br />
-          <Link to='/addStudent'>Add New Student</Link>
-        </nav>
-        <main>
-          <Switch>
-            <Route
-              path='/'
-              exact
-              component={Home}
-            />
-          </Switch>
-          <Route
-            path='/studentList'
-            exact
-            render={() => {
-              return (
-                <StudentList students={this.state.students} />
-              )
-            }}
-          />
+        <Router>
+          <div className='routerContainer'>
+            <nav>
+              <Link to='/'>Home</Link> <br />
+              <Link to='/studentList'>All Students</Link> <br />
+              <Link to='/addStudent'>Add New Student</Link>
+            </nav>
+            <main>
+              <Switch>
+                <Route
+                  path='/'
+                  exact
+                  component={Home}
+                />
+              </Switch>
+              <Route
+                path='/studentList'
+                exact
+                render={() => {
+                  return (
+                    <StudentList students={this.state.students} />
+                  )
+                }}
+              />
 
-          <Route
-            path='/addStudent'
-            exact
-            component={NewStudent}
-          />
+              <Route
+                path='/addStudent'
+                exact
+                component={NewStudent}
+              />
 
-          <Route
-            path='/studentlist/:id'
-            render={(name) => {
-              return <Student {...name} students={this.state.students} />
-            }}
-          />
-        </main>
+              <Route
+                path='/studentlist/:id'
+                render={(name) => {
+                  return <Student {...name} students={this.state.students} />
+                }}
+              />
+            </main>
+          </div>
+        </Router>
       </div>
     )
   }
