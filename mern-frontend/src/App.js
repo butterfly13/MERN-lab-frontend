@@ -16,6 +16,7 @@ class App extends Component {
 
     }
     this.getStudents = this.getStudents.bind(this)
+    this.handleAddStudent = this.handleAddStudent.bind(this)
   }
 
   getStudents () {
@@ -30,6 +31,39 @@ class App extends Component {
       .catch(err => console.log('Error fetching data in studentLst', err))
   }
 
+  handleAddStudent (student) {
+    const newStudent = this.state.students
+    newStudent.push(student)
+    // this.setState({students: newStudent}, () =>{
+    //   console.log(`new student`, this.state)
+    // })
+    axios.post('https://mern-lab-api.herokuapp.com/api/students', {
+      students: newStudent
+    })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    console.log('after pushing to db')
+    console.log(this.state)
+
+    // axios.post('https://mern-lab-api.herokuapp.com/api/students', {
+    // students: newStudent
+    // const newStudent = this.state.students
+    // newStudent.push(student)
+    // this.setState({students: newStudent})
+
+    // })
+  //     .then((res) => {
+  //       console.log(res)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  }
+
   componentWillMount () {
     this.getStudents()
   }
@@ -37,6 +71,7 @@ class App extends Component {
   componentDidMount () {
     this.getStudents()
   }
+
   render () {
     return (
 
@@ -69,7 +104,12 @@ class App extends Component {
               <Route
                 path='/addStudent'
                 exact
-                component={NewStudent}
+                // component={NewStudent}
+                render={() => {
+                  return (
+                    <NewStudent addStudent={this.handleAddStudent} />
+                  )
+                }}
               />
 
               <Route

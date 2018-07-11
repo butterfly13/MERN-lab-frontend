@@ -12,7 +12,7 @@ class Student extends Component {
     let student = this.props.students.find(list => list._id === findMatching)
     return (
       <div>
-         <h3> Student Infomation</h3>
+        <h3> Student Infomation</h3>
         <p><strong>First Name: </strong>{student.firstName}</p>
         <p><strong>Last Name:</strong> {student.lastName}</p>
         <p><strong>Cohort:</strong> {student.course}</p> 
