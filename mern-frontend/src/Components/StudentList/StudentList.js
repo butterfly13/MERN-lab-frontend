@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+
 
 
 class StudentList extends Component {
+
 
   render () {
     console.log(this.props)
@@ -10,7 +12,7 @@ class StudentList extends Component {
       return (
         <div className='ListOfStudent' key={i}>
           <p><Link to={/studentlist/ + student._id}> {student.firstName} {student.lastName}</Link></p>
-
+         
         </div>
       )
     })

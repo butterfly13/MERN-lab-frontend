@@ -16,7 +16,7 @@ class App extends Component {
 
     }
     this.getStudents = this.getStudents.bind(this)
-    this.handleAddStudent = this.handleAddStudent.bind(this)
+    // this.handleAddStudent = this.handleAddStudent.bind(this)
   }
 
   getStudents () {
@@ -29,39 +29,6 @@ class App extends Component {
         })
       })
       .catch(err => console.log('Error fetching data in studentLst', err))
-  }
-
-  handleAddStudent (student) {
-    const newStudent = this.state.students
-    newStudent.push(student)
-    // this.setState({students: newStudent}, () =>{
-    //   console.log(`new student`, this.state)
-    // })
-    axios.post('https://mern-lab-api.herokuapp.com/api/students', {
-      students: newStudent
-    })
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    console.log('after pushing to db')
-    console.log(this.state)
-
-    // axios.post('https://mern-lab-api.herokuapp.com/api/students', {
-    // students: newStudent
-    // const newStudent = this.state.students
-    // newStudent.push(student)
-    // this.setState({students: newStudent})
-
-    // })
-  //     .then((res) => {
-  //       console.log(res)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
   }
 
   componentWillMount () {
@@ -96,7 +63,10 @@ class App extends Component {
                 exact
                 render={() => {
                   return (
-                    <StudentList students={this.state.students} />
+                    <StudentList 
+                      students={this.state.students} 
+                      
+                    />
                   )
                 }}
               />
@@ -115,7 +85,15 @@ class App extends Component {
               <Route
                 path='/studentlist/:id'
                 render={(name) => {
-                  return <Student {...name} students={this.state.students} />
+                  return (
+                    <Student 
+                      {...name} 
+                      students={this.state.students}
+                      getStudents={this.getStudents}
+                      deleteStudent={this.deleteStudent}
+                     />
+                  )
+                  
                 }}
               />
             </main>
