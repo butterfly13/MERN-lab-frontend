@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import  { Redirect } from 'react-router-dom'
+import  { Redirect, Link } from 'react-router-dom'
 
 
 class NewStudent extends Component {
@@ -99,7 +99,7 @@ class NewStudent extends Component {
 
           <input type='text' name='course' value={this.state.course} onChange={this.handleChange} placeholder='Cohort' /> <br />
 
-          <input type='submit' value='Add'  />
+          <Link to='/studentList' ><input type='submit' value='Add' /> </Link>
         </form>
       </div>
     )
