@@ -11,16 +11,11 @@ class NewStudent extends Component {
       lastName: '',
       course: ''
     }
-    // if (window.location.origin === "http://localhost:3000") {
-    //   this.origin = "http://localhost:4000";
-    // } else {
-    //   this.origin = "https://mern-lab-api.herokuapp.com/api/students";
-    // }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleNewStudent = this.handleNewStudent.bind(this)
-    this.handleRedirect = this.handleRedirect.bind(this)
+    // this.handleRedirect = this.handleRedirect.bind(this)
   }
 
   handleChange (e) {
@@ -43,24 +38,21 @@ class NewStudent extends Component {
 
     // }
 
-    // this.setState(
-    //     {
-    //       firstName: '',
-    //       lastName: '',
-    //       course: ''
-    //     }
-    //   )
+    this.setState(
+        {
+          firstName: '',
+          lastName: '',
+          course: ''
+        }
+      )
   }
 
-  // handleRedirect() {
-  //   this.props.history.push('/')
+
+  // handleRedirect () {
+  //   if(this.state.redirect) {
+  //     return <Redirect to="/" />
+  //   }
   // }
-
-  handleRedirect () {
-    if(this.state.redirect) {
-      return <Redirect to="/studentList" />
-    }
-  }
 
  
 
@@ -73,14 +65,7 @@ class NewStudent extends Component {
     console.log(this)
     // this.props.history.push('/studentList')
     console.log('after submit')
-    this.handleRedirect()
-    // this.setState(
-    //   {
-    //     firstName: '',
-    //     lastName: '',
-    //     course: ''
-    //   }
-    // )
+    // this.handleRedirect()
     
   }
 
@@ -98,8 +83,9 @@ class NewStudent extends Component {
           <label>  Cohort:  </label>
 
           <input type='text' name='course' value={this.state.course} onChange={this.handleChange} placeholder='Cohort' /> <br />
-
-          <Link to='/studentList' ><input type='submit' value='Add' /> </Link>
+          <input type='submit' value='Add' />
+      
+          
         </form>
       </div>
     )
