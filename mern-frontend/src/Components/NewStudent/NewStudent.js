@@ -30,7 +30,7 @@ class NewStudent extends Component {
 
   handleNewStudent() {
    
-    if(this.state.firstName.length > 2 && this.state.lastName.length > 2 && this.state.course.length > 3){
+    // if(this.state.firstName.length > 2 && this.state.lastName.length > 2 && this.state.course.length > 3){
       axios.post('https://mern-lab-api.herokuapp.com/api/students', {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -41,15 +41,15 @@ class NewStudent extends Component {
         console.log(res)
       })
 
-    }
+    // }
 
-    this.setState(
-        {
-          firstName: '',
-          lastName: '',
-          course: ''
-        }
-      )
+    // this.setState(
+    //     {
+    //       firstName: '',
+    //       lastName: '',
+    //       course: ''
+    //     }
+    //   )
   }
 
   // handleRedirect() {

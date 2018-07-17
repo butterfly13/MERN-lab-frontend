@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Redirect, Route} from 'react-router-dom'
 import axios from 'axios'
+// import UpdateStudent from './UpdateStudent/UpdateStudent'
 
 
 class Student extends Component {
+  
 
   handleRedirect () {
     this.props.history.push('/studentList')
+  }
+
+  handleUpdate = () => {
+    window.location = '/updateStudent'
   }
 
   // handleDelelte(e){
@@ -51,6 +57,14 @@ class Student extends Component {
             } )
             .catch(err => console.log(err))
           }}>Delete Student</Link></button>
+          {/* <button>
+            <Link to={'/UpdateStudent'}>
+              onClick={this.handleUpdate}
+              Update Student Info
+            </Link>
+          </button> */}
+          
+         
 
           {/* <button><Link to='/'onClick={this.handleDelelte}>Delete Student</Link></button> */}
         

@@ -6,6 +6,7 @@ import StudentList from './Components/StudentList/StudentList'
 import NewStudent from './Components/NewStudent/NewStudent'
 import Student from './Components/Student/Student'
 import Home from './Components/Home/Home'
+// import UpdateStudent from './Components/UpdateStudent/UpdateStudent'
 import axios from 'axios'
 
 class App extends Component {
@@ -81,6 +82,10 @@ class App extends Component {
                   )
                 }}
               />
+              {/* <Route 
+                path='/updateStudent/:id'
+                path={UpdateStudent}
+              /> */}
 
               <Route
                 path='/studentlist/:id'
