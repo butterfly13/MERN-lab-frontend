@@ -17,7 +17,7 @@ class App extends Component {
 
     }
     this.getStudents = this.getStudents.bind(this)
-    // this.handleAddStudent = this.handleAddStudent.bind(this)
+    this.addStudent = this.addStudent.bind(this)
   }
 
   getStudents () {
@@ -32,12 +32,19 @@ class App extends Component {
       .catch(err => console.log('Error fetching data in studentLst', err))
   }
 
+  addStudent (student) {
+    let newStudents = this.state.students
+    newStudents.push(student)
+    this.setState({students: newStudents})
+  }
+
   componentWillMount () {
     this.getStudents()
   }
 
   componentDidMount () {
     this.getStudents()
+    this.addStudent()
   }
 
   render () {
@@ -78,7 +85,7 @@ class App extends Component {
                 // component={NewStudent}
                 render={() => {
                   return (
-                    <NewStudent addStudent={this.handleAddStudent} />
+                    <NewStudent addStudent={this.addStudent} />
                   )
                 }}
               />

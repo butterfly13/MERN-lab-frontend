@@ -34,10 +34,12 @@ class NewStudent extends Component {
       .then(res => {
         console.log(`in handleNewStudent`)
         console.log(res)
+        
       })
 
     // }
-
+      console.log('in side handle new student')
+      console.log(this.state)
     this.setState(
         {
           firstName: '',
@@ -60,16 +62,21 @@ class NewStudent extends Component {
     e.preventDefault()
     console.log('from handle submit in newStudent')
     console.log(this.state)
+    this.props.addStudent(this.state)
+    // console.log()
     // this.props.addStudent(this.state)
     this.handleNewStudent()
     console.log(this)
     // this.props.history.push('/studentList')
     console.log('after submit')
     // this.handleRedirect()
+
     
   }
 
   render () {
+   
+    
     return (
       <div className='newStudent'>
         <p> Add New Student</p>
