@@ -32,19 +32,21 @@ class App extends Component {
       .catch(err => console.log('Error fetching data in studentLst', err))
   }
 
-  addStudent (student) {
-    let newStudents = this.state.students
-    newStudents.push(student)
-    this.setState({students: newStudents})
-  }
-
   componentWillMount () {
     this.getStudents()
+    
   }
 
   componentDidMount () {
     this.getStudents()
-    this.addStudent()
+    
+  }
+
+  addStudent (student) {
+    let newStudents = this.state.students
+    newStudents.push(student)
+    this.setState({students: newStudents})
+    this.getStudents()
   }
 
   render () {
@@ -69,10 +71,13 @@ class App extends Component {
               <Route
                 path='/studentList'
                 exact
-                render={() => {
+                render={(student) => {
                   return (
                     <StudentList 
+                      {...student}
                       students={this.state.students} 
+                      getStudents={this.getStudents}
+                      
                       
                     />
                   )
