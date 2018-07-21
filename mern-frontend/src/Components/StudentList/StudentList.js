@@ -4,14 +4,12 @@ import {Link, Redirect} from 'react-router-dom'
 
 
 class StudentList extends Component {
-  componentDidMount(){
-    this.props.getstudents
+  componentDidMount() {
+    this.props.getStudents();
   }
-
 
   render () {
     console.log('from student list')
-    // console.log(this.props.getStudent())
     let list = this.props.students.map((student, i) => {
       return (
         <div className='ListOfStudent' key={i}>

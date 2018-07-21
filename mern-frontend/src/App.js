@@ -17,7 +17,7 @@ class App extends Component {
 
     }
     this.getStudents = this.getStudents.bind(this)
-    this.addStudent = this.addStudent.bind(this)
+    // this.addStudent = this.addStudent.bind(this)
   }
 
   getStudents () {
@@ -32,22 +32,22 @@ class App extends Component {
       .catch(err => console.log('Error fetching data in studentLst', err))
   }
 
-  componentWillMount () {
-    this.getStudents()
+  // componentWillMount () {
+  //   this.getStudents()
     
-  }
+  // }
 
   componentDidMount () {
     this.getStudents()
     
   }
 
-  addStudent (student) {
-    let newStudents = this.state.students
-    newStudents.push(student)
-    this.setState({students: newStudents})
-    this.getStudents()
-  }
+  // addStudent (student) {
+  //   let newStudents = this.state.students
+  //   newStudents.push(student)
+  //   this.setState({students: newStudents})
+  //   this.getStudents()
+  // }
 
   render () {
     return (
@@ -74,26 +74,29 @@ class App extends Component {
                 render={(student) => {
                   return (
                     <StudentList 
-                      {...student}
                       students={this.state.students} 
                       getStudents={this.getStudents}
-                      
+                      {...student}
                       
                     />
                   )
                 }}
               />
 
-              <Route
+              {/* <Route
                 path='/addStudent'
                 exact
                 // component={NewStudent}
                 render={() => {
                   return (
-                    <NewStudent addStudent={this.addStudent} />
+                    <NewStudent
+                     addStudent={this.addStudent} 
+                    //  getStudents={this.getStudents}
+                    />
                   )
                 }}
-              />
+              /> */}
+              <Route path='/addStudent' component={NewStudent} />
               {/* <Route 
                 path='/updateStudent/:id'
                 path={UpdateStudent}

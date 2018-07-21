@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import  { Redirect, Link } from 'react-router-dom'
+import  { Link } from 'react-router-dom'
 
 
 class NewStudent extends Component {
@@ -10,13 +10,15 @@ class NewStudent extends Component {
       firstName: '',
       lastName: '',
       course: ''
+  
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleNewStudent = this.handleNewStudent.bind(this)
-    // this.handleRedirect = this.handleRedirect.bind(this)
   }
+
+
 
   handleChange (e) {
     this.setState({[e.target.name]: e.target.value})
@@ -40,37 +42,27 @@ class NewStudent extends Component {
     // }
       console.log('in side handle new student')
       console.log(this.state)
-    this.setState(
-        {
-          firstName: '',
-          lastName: '',
-          course: ''
-        }
-      )
+    // this.setState(
+    //     {
+    //       firstName: '',
+    //       lastName: '',
+    //       course: ''
+    //     }
+    //   )
   }
 
-
-  // handleRedirect () {
-  //   if(this.state.redirect) {
-  //     return <Redirect to="/" />
-  //   }
-  // }
-
- 
 
   handleSubmit (e) {
     e.preventDefault()
     console.log('from handle submit in newStudent')
-    console.log(this.state)
-    this.props.addStudent(this.state)
-    // console.log()
-    // this.props.addStudent(this.state)
     this.handleNewStudent()
+    // this.props.getStudents
     console.log(this)
-    // this.props.history.push('/studentList')
-    console.log('after submit')
-    // this.handleRedirect()
-
+  
+    this.props.history.push('/studentList')
+    // console.log('after submit')
+    // console.log(this.props)
+  
     
   }
 
@@ -90,7 +82,7 @@ class NewStudent extends Component {
           <label>  Cohort:  </label>
 
           <input type='text' name='course' value={this.state.course} onChange={this.handleChange} placeholder='Cohort' /> <br />
-          <input type='submit' value='Add' />
+          <input type='submit' value='Add'/>
       
           
         </form>
